@@ -77,7 +77,8 @@
 (require 'recentf)
 (recentf-mode 1)
 (setq recentf-max-menu-items 25)
-(require 'vc-p4)
+(require 'p4)
+(require 'magit)
 (require 'helm-etags+)
 
 ;; helm projectile
