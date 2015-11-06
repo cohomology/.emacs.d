@@ -79,7 +79,24 @@
 (setq recentf-max-menu-items 25)
 (require 'p4)
 (require 'magit)
-(require 'helm-etags+)
+
+;; helm gtags
+(require 'helm-gtags)
+(add-hook 'c-mode-hook 'helm-gtags-mode)
+(add-hook 'c++-mode-hook 'helm-gtags-mode)
+(add-hook 'asm-mode-hook 'helm-gtags-mode)
+
+(custom-set-variables
+ '(helm-gtags-path-style 'relative)
+ '(helm-gtags-ignore-case t)
+ '(helm-gtags-auto-update t))
+
+(defun my-c-helm-gtags-mode ()
+  (local-set-key (kbd "C-]") 'helm-gtags-find-tag-from-here)
+  (local-set-key (kbd "C-ö") (lambda () (interactive) (helm-gtags-find-tag-other-window (thing-at-point 'symbol)))))
+
+(add-hook 'c++-mode-hook 'my-c-helm-gtags-mode)
+(add-hook 'c-mode-hook 'my-c-helm-gtags-mode)
 
 ;; helm projectile
 (require 'projectile)
@@ -87,6 +104,7 @@
 (projectile-global-mode)
 (setq projectile-completion-system 'helm)
 (setq projectile-enable-caching t)
+(setq projectile-switch-project-action 'helm-projectile)
 (helm-projectile-on)
 
 ;; key mappings 
@@ -97,7 +115,7 @@
                      "o" 'delete-other-windows
                      "b" 'helm-mini
                      "g" 'projectile-grep
-                     "t" 'helm-etags+-select
+                     "t" 'helm-gtags-select
                      "h" 'helm-projectile-find-file-dwim
                      "f" 'projectile-find-file) ;; recently opened files
 
@@ -146,3 +164,35 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (setq c-default-style '((java-mode . "java")
                         (awk-mode . "awk")
                         (other . "bsd")))
+
+;; debugger settings
+(require 'gud)
+(add-hook 'gdb-mode-hook 'gud-initialize)
+
+(defun gud-initialize ()
+    "The definition of the keys is similar to MSVC++"
+    (local-set-key [S-f5]  'gud-run)   
+    (local-set-key [S-f10] 'gud-cont)
+    (local-set-key [f11]   'gud-step)
+    (local-set-key [f10]   'gud-next)
+    (local-set-key [S-f11] 'gud-finish)
+)
+
+;; semantics
+(require 'semantic)
+(require 'semantic/bovine/gcc)
+(semantic-mode 1)
+(add-to-list 'semantic-default-submodes 'global-semanticdb-minor-mode)
+(add-to-list 'semantic-default-submodes 'global-semantic-idle-local-symbol-highlight-mode)
+(add-to-list 'semantic-default-submodes 'global-semantic-idle-scheduler-mode)
+(add-to-list 'semantic-default-submodes 'global-semantic-idle-summary-mode)
+(semanticdb-enable-gnu-global-databases 'c++-mode)
+(setq semanticdb-project-roots
+      (list "/local/git/CGK"
+            "/local/depot/CGK"))
+(global-ede-mode 1)
+(setq cedet-global-command "global")
+(setq ede-locate-setup-options
+      '(ede-locate-global
+        ede-locate-base))
+
