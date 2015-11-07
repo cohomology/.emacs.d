@@ -1,0 +1,12 @@
+(defgroup my-init-vc nil
+  "Settings for version control."
+  :group 'my-init
+  :prefix 'my-init-vc)
+
+(use-package p4
+  :ensure t)
+
+(use-package magit
+  :ensure t)
+
+(provide 'init-vc)
