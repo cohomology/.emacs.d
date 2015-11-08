@@ -78,11 +78,11 @@
 (use-package evil-anzu
   :ensure t)
 
-(use-package evil-jumper
+ (use-package evil-jumper
   :init
   (setq evil-jumper-auto-center t)
   :config
-  (evil-jumper-mode t)
+  (global-evil-jumper-mode)
   :ensure t)
 
 (use-package evil-matchit
