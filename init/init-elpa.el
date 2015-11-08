@@ -18,4 +18,8 @@
 ;; get new contents
 (package-refresh-contents)
 (package-initialize)
+(use-package elscreen
+  :config
+  (elscreen-start)
+  :ensure t)
 (provide 'init-elpa)

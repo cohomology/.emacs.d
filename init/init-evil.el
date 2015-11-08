@@ -108,6 +108,11 @@
 (use-package evil-vimish-fold
   :ensure t)
 
+(use-package evil-tabs
+  :config
+  (global-evil-tabs-mode t)
+  :ensure t)
+
 (defun my-major-mode-evil-state-adjust ()
   (if (apply 'derived-mode-p my-init-evil/evil-state-modes)
       (turn-on-evil-mode)
