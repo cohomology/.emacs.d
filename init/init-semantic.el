@@ -9,14 +9,22 @@
         (list "/local/git/CGK"
               "/local/depot/CGK"
               "~/.emacs.d/"))
-  (setq cedet-global-command "global")
-  (setq ede-locate-setup-options
-        '(ede-locate-global
-          ede-locate-base))
   :config
-  (semantic-mode 1)
-  (global-ede-mode 1)
-  (semanticdb-enable-gnu-global-databases 'c++-mode)
+  (progn
+    (semantic-mode 1)
+    (semanticdb-enable-gnu-global-databases 'c-mode)
+    (semanticdb-enable-gnu-global-databases 'c++-mode))
+  :ensure t)
+
+(use-package ede
+  :init
+  (progn
+    (setq cedet-global-command "global")
+    (setq ede-locate-setup-options
+          '(ede-locate-global
+            ede-locate-base)))
+  :config
+  (global-ede-mode t)
   :ensure t)
 
 (add-to-list 'semantic-default-submodes 'global-semanticdb-minor-mode)
@@ -30,9 +38,23 @@
   (semantic-add-system-include
      "/sapmnt/depot/tools/src/OpenSource/STLport/4.5.0/stlport" 'c++-mode))
 
-(add-hook 'semantic-init-hooks 'my-semantic-hook)j
+(add-hook 'semantic-init-hooks 'my-semantic-hook)
 
-(use-package semantic/bovine/gcc
-  :ensure t)
+(require 'semantic/bovine/gcc)
+(require 'semantic/ia)
+
+(defun my-semantic-mode ()
+  (local-set-key (kbd "M-ö") 'semantic-ia-fast-jump)
+  (local-set-key (kdb "M-ä")
+                 (lambda ()
+                   (interactive)
+                   (let* ((currW (selected-window))
+                          (newW (split-window-horizontally)))
+                     (select-window newW)
+                     (semantic-ia-fast-jump)
+                     (select-window currW)))
+  ))
+
+(add-hook 'c-mode-common-hook 'my-semantic-mode)
 
 (provide 'init-semantic)

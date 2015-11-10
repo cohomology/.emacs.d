@@ -5,10 +5,11 @@
 
 (use-package cc-mode
   :init
-  (setq c-basic-offset 2)
-  (setq c-default-style '((java-mode . "java")
-                          (awk-mode . "awk")
-                          (other . "bsd")))
+  (progn
+    (setq c-basic-offset 2)
+    (setq c-default-style '((java-mode . "java")
+                            (awk-mode . "awk")
+                            (other . "bsd"))))
   :ensure t)
 
 ;; thread .h and .c files as c++

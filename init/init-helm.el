@@ -10,9 +10,10 @@
   :ensure t)
 
 (use-package helm-gtags
-  :init
-  (setq helm-gtags-fuzzy-match t)
-  (setq helm-gtags-direct-helm-completing t)
+  :init 
+  (progn
+    (setq helm-gtags-fuzzy-match t)
+    (setq helm-gtags-direct-helm-completing t))
   :ensure t)
 
 (add-hook 'c-mode-hook 'helm-gtags-mode)
@@ -33,9 +34,10 @@
 
 (use-package projectile
   :init
-  (setq projectile-completion-system 'helm)
-  (setq projectile-enable-caching t)
-  (setq projectile-switch-project-action 'helm-projectile)
+  (progn
+    (setq projectile-completion-system 'helm)
+    (setq projectile-enable-caching t)
+    (setq projectile-switch-project-action 'helm-projectile))
   :config
   (projectile-global-mode)
   :ensure t)
@@ -49,6 +51,8 @@
 (setq helm-M-x-fuzzy-match t) ;; enable fuzzy search for M-x
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
+(global-set-key (kbd "M-p") 'projectile-switch-project)
+
 (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to do persistent action
 (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB works in terminal
 (define-key helm-map (kbd "C-z")  'helm-select-action) ; list actions using C-z

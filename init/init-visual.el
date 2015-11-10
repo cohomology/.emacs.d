@@ -4,9 +4,10 @@
   :prefix 'my-init-visual)
 
 (use-package moe-theme
-  :config
-  (moe-dark)
-  (moe-theme-set-color 'blue)
+  :config  
+  (progn
+    (moe-dark)
+    (moe-theme-set-color 'blue))
   :ensure t)
 
 (use-package powerline

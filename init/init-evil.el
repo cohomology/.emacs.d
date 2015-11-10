@@ -56,8 +56,9 @@
   :init
   (setq evil-leader/in-all-states 1)
   :config
-  (global-evil-leader-mode t)
-  (evil-leader/set-leader ",")
+  (progn
+    (global-evil-leader-mode t)
+    (evil-leader/set-leader ","))
   :ensure t)
 
 (use-package evil-commentary
