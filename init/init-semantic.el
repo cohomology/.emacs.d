@@ -5,10 +5,17 @@
 
 (use-package semantic
   :init
-  (setq semanticdb-project-roots
-        (list "/local/git/CGK"
-              "/local/depot/CGK"
-              "~/.emacs.d/"))
+  (progn
+    (add-to-list 'semantic-default-submodes '(global-semanticdb-minor-mode
+                                              global-semantic-idle-local-symbol-highlight-mode
+                                              global-semantic-idle-scheduler-mode
+                                              global-semantic-idle-summary-mode
+                                              global-semantic-mru-bookmark-mode))
+
+    (setq semanticdb-project-roots
+          (list "/local/git/CGK"
+                "/local/depot/CGK"
+                "~/.emacs.d/")))
   :config
   (progn
     (semantic-mode 1)
@@ -27,10 +34,8 @@
   (global-ede-mode t)
   :ensure t)
 
-(add-to-list 'semantic-default-submodes 'global-semanticdb-minor-mode)
-(add-to-list 'semantic-default-submodes 'global-semantic-idle-local-symbol-highlight-mode)
-(add-to-list 'semantic-default-submodes 'global-semantic-idle-scheduler-mode)
-(add-to-list 'semantic-default-submodes 'global-semantic-idle-summary-mode)
+(defadvice semantic-ia-fast-jump (before evil-jumper--switch-to-buffer activate)
+  (evil-jumper--set-jump))
 
 (defun my-semantic-hook ()
   (semantic-add-system-include
@@ -42,18 +47,16 @@
 
 (require 'semantic/bovine/gcc)
 (require 'semantic/ia)
+(require 'semantic/analyze/complete)
+(require 'semantic/analyze/refs)
+(require 'semantic/mru-bookmark)
+
+;; activate gtags imenu building
+(setq-local imenu-create-index-function #'ggtags-build-imenu-index)
+(global-semantic-mru-bookmark-mode 1)
 
 (defun my-semantic-mode ()
-  (local-set-key (kbd "M-ö") 'semantic-ia-fast-jump)
-  (local-set-key (kdb "M-ä")
-                 (lambda ()
-                   (interactive)
-                   (let* ((currW (selected-window))
-                          (newW (split-window-horizontally)))
-                     (select-window newW)
-                     (semantic-ia-fast-jump)
-                     (select-window currW)))
-  ))
+  (local-set-key (kbd "M-ö") 'semantic-ia-fast-jump))
 
 (add-hook 'c-mode-common-hook 'my-semantic-mode)
 

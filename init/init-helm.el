@@ -25,12 +25,11 @@
  '(helm-gtags-ignore-case t)
  '(helm-gtags-auto-update t))
 
-(defun my-c-helm-gtags-mode ()
+(defun my-helm-gtags-keys ()
   (local-set-key (kbd "C-ö") 'helm-gtags-find-tag-from-here)
-  (local-set-key (kbd "C-ä") (lambda () (interactive) (helm-gtags-find-tag-other-window (thing-at-point 'symbol)))))
+  (local-set-key (kbd "C-ä") '(lambda () (interactive) (helm-gtags-find-tag-other-window (thing-at-point 'symbol)))))
 
-(add-hook 'c++-mode-hook 'my-c-helm-gtags-mode)
-(add-hook 'c-mode-hook 'my-c-helm-gtags-mode)
+(add-hook 'c-mode-common-hook 'my-helm-gtags-keys)
 
 (use-package projectile
   :init
