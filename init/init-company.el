@@ -4,6 +4,9 @@
   :prefix 'my-init-company)
 
 (use-package company
+  :init
+  (progn
+    (setq company-auto-complete t))
   :config
   (progn
     (add-hook 'after-init-hook 'global-company-mode))
@@ -12,17 +15,14 @@
 (require 'company-gtags)
 (require 'company-rtags)
 
-(use-package company-irony
-  :config
-  (progn
-    (setq company-backends (delete 'company-clang company-backends))
-    (eval-after-load 'company
-    '(add-to-list 'company-backends 'company-rtags)))
-  :ensure t)
+(setq company-backends (delete 'company-clang company-backends))
+(eval-after-load 'company
+  '(add-to-list 'company-backends 'company-rtags))
 
 (use-package company-quickhelp
   :config
-  (company-quickhelp-mode 1)
+  (if window-system
+    (company-quickhelp-mode 1))
   :ensure t)
 
 (provide 'init-company)
