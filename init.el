@@ -16,4 +16,5 @@
 (require 'init-evil)      ;; init evil mode
 (require 'init-cpp)       ;; c++ coding style
 (require 'init-gdb)       ;; debugger settings
-(require 'init-semantic)  ;; init semantic
+(require 'init-irony)     ;; irony mode 
+(require 'init-company)   ;; company mode 

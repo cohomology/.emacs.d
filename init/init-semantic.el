@@ -34,7 +34,11 @@
   (global-ede-mode t)
   :ensure t)
 
-(defadvice semantic-ia-fast-jump (before evil-jumper--switch-to-buffer activate)
+(defun my-fast-jump ()
+  (interactive)
+  (semantic-ia-fast-jump (point)))
+
+(defadvice my-fast-jump (before evil-jumper--switch-to-buffer activate)
   (evil-jumper--set-jump))
 
 (defun my-semantic-hook ()
@@ -47,16 +51,22 @@
 
 (require 'semantic/bovine/gcc)
 (require 'semantic/ia)
-(require 'semantic/analyze/complete)
-(require 'semantic/analyze/refs)
-(require 'semantic/mru-bookmark)
 
 ;; activate gtags imenu building
 (setq-local imenu-create-index-function #'ggtags-build-imenu-index)
-(global-semantic-mru-bookmark-mode 1)
 
 (defun my-semantic-mode ()
-  (local-set-key (kbd "M-ö") 'semantic-ia-fast-jump))
+  (local-set-key (kbd "M-ü") 'semantic-ia-complete-symbol)
+  (local-set-key (kbd "M-ö") 'my-fast-jump)
+  (local-set-key (kbd "M-ä") (lambda () (interactive)
+                               (let* ((cB (window-buffer))
+                                      (cW (selected-window)))
+                                      (if (one-window-p)
+                                          (select-window (split-window-horizontally))
+                                            (other-window 1)
+                                            (switch-to-buffer cB))
+                                 (semantic-ia-fast-jump (point))
+                                 (select-window cW)))))
 
 (add-hook 'c-mode-common-hook 'my-semantic-mode)
 

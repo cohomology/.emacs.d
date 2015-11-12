@@ -16,9 +16,7 @@
     (setq helm-gtags-direct-helm-completing t))
   :ensure t)
 
-(add-hook 'c-mode-hook 'helm-gtags-mode)
-(add-hook 'c++-mode-hook 'helm-gtags-mode)
-(add-hook 'asm-mode-hook 'helm-gtags-mode)
+(add-hook 'c-mode-common-hook 'helm-gtags-mode)
 
 (custom-set-variables
  '(helm-gtags-path-style 'relative)
@@ -27,7 +25,15 @@
 
 (defun my-helm-gtags-keys ()
   (local-set-key (kbd "C-ö") 'helm-gtags-find-tag-from-here)
-  (local-set-key (kbd "C-ä") '(lambda () (interactive) (helm-gtags-find-tag-other-window (thing-at-point 'symbol)))))
+  (local-set-key (kbd "C-ä") (lambda () (interactive)
+                               (let* ((cB (window-buffer))
+                                      (cW (selected-window)))
+                                      (if (one-window-p)
+                                          (select-window (split-window-horizontally))
+                                            (other-window 1)
+                                            (switch-to-buffer cB))
+                                 (helm-gtags-find-tag-from-here)
+                                 (select-window cW)))))
 
 (add-hook 'c-mode-common-hook 'my-helm-gtags-keys)
 
