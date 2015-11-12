@@ -16,5 +16,5 @@
 (require 'init-evil)      ;; init evil mode
 (require 'init-cpp)       ;; c++ coding style
 (require 'init-gdb)       ;; debugger settings
-(require 'init-irony)     ;; irony mode 
+(require 'init-rtags)     ;; rtags
 (require 'init-company)   ;; company mode 

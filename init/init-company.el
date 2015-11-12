@@ -6,28 +6,23 @@
 (use-package company
   :config
   (progn
-    (add-hook 'after-init-hook 'global-company-mode)
-    (setq company-async-timeout 10))
+    (add-hook 'after-init-hook 'global-company-mode))
   :ensure t)
 
 (require 'company-gtags)
+(require 'company-rtags)
 
 (use-package company-irony
   :config
   (progn
     (setq company-backends (delete 'company-clang company-backends))
     (eval-after-load 'company
-    '(add-to-list 'company-backends 'company-irony)))
+    '(add-to-list 'company-backends 'company-rtags)))
   :ensure t)
 
 (use-package company-quickhelp
   :config
   (company-quickhelp-mode 1)
   :ensure t)
-
-(defun my-company-keys ()
-  (local-set-key (kbd "M-ö") 'company-complete))
-  
-(add-hook 'c-mode-common-hook 'my-company-keys)
 
 (provide 'init-company)

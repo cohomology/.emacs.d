@@ -25,4 +25,6 @@
 (setq bookmark-default-file "~/.emacs.d/bookmarks"
       bookmark-save-flag 1) ;; save after every change
 (setq-default tab-width 2 indent-tabs-mode nil) ;; no tabs, indent = 2
+(add-to-list 'safe-local-variable-values
+             '(compile-command . "make_cgk"))
 (provide 'init-essential)
