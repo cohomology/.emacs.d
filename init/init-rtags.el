@@ -13,7 +13,16 @@
 (defadvice my-rtags-complete (before evil-jumper--switch-to-buffer activate)  
   (evil-jumper--set-jump))  
 
+(defun my-rtags-find-references ()
+  (interactive)
+  (rtags-find-references-at-point))
+
+(defadvice my-rtags-find-references (before evil-jumper--switch-to-buffer activate)  
+  (evil-jumper--set-jump))  
+
+
 (defun my-rtags-keys ()
+  (local-set-key (kbd "M-#") 'my-rtags-find-references)
   (local-set-key (kbd "M-ö") 'my-rtags-complete)
   (local-set-key (kbd "M-ä") (lambda () (interactive)
                                (let* ((cB (window-buffer))
