@@ -5,7 +5,9 @@
 
 (use-package company
   :config
-  (add-hook 'after-init-hook 'global-company-mode)
+  (progn
+    (add-hook 'after-init-hook 'global-company-mode)
+    (setq company-async-timeout 10))
   :ensure t)
 
 (require 'company-gtags)
@@ -22,5 +24,10 @@
   :config
   (company-quickhelp-mode 1)
   :ensure t)
+
+(defun my-company-keys ()
+  (local-set-key (kbd "M-ö") 'company-complete))
+  
+(add-hook 'c-mode-common-hook 'my-company-keys)
 
 (provide 'init-company)
