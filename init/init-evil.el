@@ -155,5 +155,4 @@
 (global-set-key (kbd "C-M-+") 'evil-window-increase-height)
 (global-set-key (kbd "C-M--") 'evil-window-decrease-height)
 
-
 (provide 'init-evil)
