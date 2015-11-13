@@ -11,6 +11,7 @@
     sws-mode
     yaml-mode
     vimrc-mode
+    help-mode
     dired-mode
     web-mode
     log-edit-mode)
@@ -147,5 +148,12 @@
                      "t" 'helm-gtags-select
                      "h" 'helm-projectile-find-file-dwim
                      "f" 'projectile-find-file) ;; recently opened files
+
+;; increase and decrease width
+(global-set-key (kbd "C-+") 'evil-window-increase-width)
+(global-set-key (kbd "C--") 'evil-window-decrease-width)
+(global-set-key (kbd "C-M-+") 'evil-window-increase-height)
+(global-set-key (kbd "C-M--") 'evil-window-decrease-height)
+
 
 (provide 'init-evil)
