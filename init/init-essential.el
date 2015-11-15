@@ -30,4 +30,7 @@
 (put 'narrow-to-region 'disabled nil)
 (fset 'yes-or-no-p 'y-or-n-p) ;; "y" or "n" instead of "yes" or "no"
 (setq sentence-end-double-space nil) ;; sentences end in single space after point
+(prefer-coding-system 'utf-8)
+(when (display-graphic-p)
+  (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING)))
 (provide 'init-essential)
