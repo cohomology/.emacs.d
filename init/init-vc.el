@@ -7,11 +7,14 @@
   :ensure t)
 
 (use-package magit
+  :config
+  (global-magit-file-mode)
   :ensure t)
 
 (use-package evil-magit
   :ensure t)
 
-(global-set-key [f2] 'magit-status)
+(global-set-key (kbd "C-x g") 'magit-status)
+(global-set-key (kbd "C-x M-g") 'magit-dispatch-popup)
 
 (provide 'init-vc)
