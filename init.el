@@ -18,3 +18,4 @@
 (require 'init-gdb)       ;; debugger settings
 (require 'init-rtags)     ;; rtags
 (require 'init-company)   ;; company mode 
+(require 'init-compile)   ;; compile settings
