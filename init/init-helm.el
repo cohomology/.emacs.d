@@ -23,6 +23,11 @@
  '(helm-gtags-ignore-case t)
  '(helm-gtags-auto-update t))
 
+(defun my-helm-quit-keys ()
+  (define-key helm-map (kbd "ESC") 'helm-keyboard-quit))
+
+(add-hook 'after-init-hook 'my-helm-quit-keys)
+
 (defun my-helm-gtags-keys ()
   (local-set-key (kbd "C-ö") 'helm-gtags-find-tag-from-here)
   (local-set-key (kbd "C-ä") (lambda () (interactive)

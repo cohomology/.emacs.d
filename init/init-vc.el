@@ -12,4 +12,6 @@
 (use-package evil-magit
   :ensure t)
 
+(global-set-key [f2] 'magit-status)
+
 (provide 'init-vc)
