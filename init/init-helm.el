@@ -67,4 +67,9 @@
 (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB works in terminal
 (define-key helm-map (kbd "C-z")  'helm-select-action) ; list actions using C-z
 
+(use-package helm-descbinds
+  :defer t
+  :bind (("C-h b" . helm-descbinds)) 
+  :ensure t)
+
 (provide 'init-helm)

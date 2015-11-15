@@ -27,4 +27,7 @@
 (setq-default tab-width 2 indent-tabs-mode nil) ;; no tabs, indent = 2
 (add-to-list 'safe-local-variable-values
              '(compile-command . "make_cgk"))
+(put 'narrow-to-region 'disabled nil)
+(fset 'yes-or-no-p 'y-or-n-p) ;; "y" or "n" instead of "yes" or "no"
+(setq sentence-end-double-space nil) ;; sentences end in single space after point
 (provide 'init-essential)

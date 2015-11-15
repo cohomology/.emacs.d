@@ -158,6 +158,7 @@
 (global-set-key (kbd "C-M-+") 'evil-window-increase-height)
 (global-set-key (kbd "C-M--") 'evil-window-decrease-height)
 
+;; escape everything
 (defun my-minibuffer-keyboard-quit ()
   "Abort recursive edit.
 In Delete Selection mode, if the mark is active, just deactivate it;
@@ -174,5 +175,26 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (define-key minibuffer-local-completion-map [escape] 'my-minibuffer-keyboard-quit)
 (define-key minibuffer-local-must-match-map [escape] 'my-minibuffer-keyboard-quit)
 (define-key minibuffer-local-isearch-map [escape] 'my-minibuffer-keyboard-quit)
+
+;; global C-w configuration; not just in evil buffers
+(defun my-set-control-w-shortcuts ()
+  (define-prefix-command 'my-window-map)
+  (global-set-key (kbd "C-w") 'my-window-map)
+  (define-key my-window-map (kbd "h") 'windmove-left)
+  (define-key my-window-map (kbd "j") 'windmove-down)
+  (define-key my-window-map (kbd "k") 'windmove-up)
+  (define-key my-window-map (kbd "l") 'windmove-right)
+  (define-key my-window-map (kbd "v") 'split-window-right)
+  (define-key my-window-map (kbd "b") 'split-window-below)
+  (define-key my-window-map (kbd "x") 'delete-window)
+  (define-key my-window-map (kbd "o") 'delete-other-windows))
+
+(add-hook 'after-init-hook 'my-set-control-w-shortcuts)
+
+(eval-after-load "evil-maps"
+  (dolist (map '(evil-motion-state-map
+                 evil-insert-state-map
+                 evil-emacs-state-map))
+    (define-key (eval map) "\C-w" nil)))
 
 (provide 'init-evil)
