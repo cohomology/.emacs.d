@@ -188,6 +188,9 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
   (define-key my-window-map (kbd "b") 'split-window-below)
   (define-key my-window-map (kbd "x") 'delete-window)
   (define-key my-window-map (kbd "o") 'delete-other-windows)
+  (define-key my-window-map (kbd "X") 'elscreen-kill)
+  (define-key my-window-map (kbd "p") 'elscreen-previous)
+  (define-key my-window-map (kbd "n") 'elscreen-next)
   (define-key my-window-map (kbd "t") 'evil-tabs-current-buffer-to-tab))
 
 (my-set-control-w-shortcuts)
