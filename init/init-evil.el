@@ -14,6 +14,9 @@
     help-mode
     dired-mode
     web-mode
+    magit-log-mode
+    magit-revision-mode
+    magit-mode
     log-edit-mode)
   "List of modes that should start up in Evil state."
   :type '(repeat (symbol))
