@@ -187,9 +187,10 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
   (define-key my-window-map (kbd "v") 'split-window-right)
   (define-key my-window-map (kbd "b") 'split-window-below)
   (define-key my-window-map (kbd "x") 'delete-window)
-  (define-key my-window-map (kbd "o") 'delete-other-windows))
+  (define-key my-window-map (kbd "o") 'delete-other-windows)
+  (define-key my-window-map (kbd "t") 'evil-tabs-current-buffer-to-tab))
 
-(add-hook 'after-init-hook 'my-set-control-w-shortcuts)
+(my-set-control-w-shortcuts)
 
 (eval-after-load "evil-maps"
   (dolist (map '(evil-motion-state-map
