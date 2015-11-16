@@ -148,7 +148,6 @@
                      "o" 'delete-other-windows
                      "b" 'helm-mini
                      "g" 'projectile-grep
-                     "t" 'helm-gtags-select
                      "h" 'helm-projectile-find-file-dwim
                      "f" 'projectile-find-file) ;; recently opened files
 

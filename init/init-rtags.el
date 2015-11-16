@@ -22,9 +22,9 @@
 
 
 (defun my-rtags-keys ()
-  (local-set-key (kbd "M-#") 'my-rtags-find-references)
-  (local-set-key (kbd "M-ö") 'my-rtags-complete)
-  (local-set-key (kbd "M-ä") (lambda () (interactive)
+  (local-set-key (kbd "C-#") 'my-rtags-find-references)
+  (local-set-key (kbd "C-ö") 'my-rtags-complete)
+  (local-set-key (kbd "C-ä") (lambda () (interactive)
                                (let* ((cB (window-buffer))
                                       (cW (selected-window)))
                                  (if (one-window-p)

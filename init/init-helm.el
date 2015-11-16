@@ -9,38 +9,10 @@
 (use-package helm-cmd-t
   :ensure t)
 
-(use-package helm-gtags
-  :init 
-  (progn
-    (setq helm-gtags-fuzzy-match t)
-    (setq helm-gtags-direct-helm-completing t))
-  :ensure t)
-
-(add-hook 'c-mode-common-hook 'helm-gtags-mode)
-
-(custom-set-variables
- '(helm-gtags-path-style 'relative)
- '(helm-gtags-ignore-case t)
- '(helm-gtags-auto-update t))
-
 (defun my-helm-quit-keys ()
   (define-key helm-map (kbd "ESC") 'helm-keyboard-quit))
 
 (add-hook 'after-init-hook 'my-helm-quit-keys)
-
-(defun my-helm-gtags-keys ()
-  (local-set-key (kbd "C-ö") 'helm-gtags-find-tag-from-here)
-  (local-set-key (kbd "C-ä") (lambda () (interactive)
-                               (let* ((cB (window-buffer))
-                                      (cW (selected-window)))
-                                      (if (one-window-p)
-                                          (select-window (split-window-horizontally))
-                                            (other-window 1)
-                                            (switch-to-buffer cB))
-                                 (helm-gtags-find-tag-from-here)
-                                 (select-window cW)))))
-
-(add-hook 'c-mode-common-hook 'my-helm-gtags-keys)
 
 (use-package projectile
   :init
