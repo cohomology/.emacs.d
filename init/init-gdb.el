@@ -23,7 +23,14 @@
 
 (defun my-gud ()
   (interactive)
-  (gdb "gdb -i=mi"))
+  (let ((gbuf (get-buffer "*gud*")))
+    (if gbuf
+        (progn
+          (let ((proc (get-buffer-process gbuf)))
+            (if proc
+                (delete-process proc)))
+          (kill-buffer gbuf))
+      (gdb "gdb -i=mi"))))
 
 (global-set-key [f12] 'my-gud)
 
