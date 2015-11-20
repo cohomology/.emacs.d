@@ -9,10 +9,22 @@
 (use-package helm-cmd-t
   :ensure t)
 
+(use-package helm-gtags
+  :ensure t)
+
+(custom-set-variables
+ '(helm-gtags-auto-update t))
+            
 (defun my-helm-quit-keys ()
   (define-key helm-map (kbd "ESC") 'helm-keyboard-quit))
 
+(defun my-helm-gtags-mode ()
+  (interactive)
+  (helm-gtags-mode)
+  (local-set-key (kbd "M-ö") 'helm-gtags-find-tag-from-here))
+
 (add-hook 'after-init-hook 'my-helm-quit-keys)
+(add-hook 'c-mode-common-hook 'my-helm-gtags-mode)
 
 (use-package projectile
   :init

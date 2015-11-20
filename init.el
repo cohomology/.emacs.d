@@ -17,6 +17,6 @@
 (require 'init-cpp)       ;; c++ coding style
 (require 'init-gdb)       ;; debugger settings
 (require 'init-rtags)     ;; rtags
-(require 'init-irony)     ;; add irony
 (require 'init-company)   ;; company mode 
 (require 'init-compile)   ;; compile settings
+(require 'init-antlr)     ;; antlr-mode

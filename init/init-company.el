@@ -6,19 +6,19 @@
 (use-package company
   :init
   (progn
-    (setq company-auto-complete t)
+    (setq company-idle-delay 0)
+    (setq company-auto-complete nil)
     (setq company-async-timeout 10))
   :config
   (progn
     (add-hook 'after-init-hook 'global-company-mode))
   :ensure t)
 
-(use-package company-irony
-  :ensure t)
+(require 'company-gtags)
 
 (setq company-backends (delete 'company-clang company-backends))
 (eval-after-load 'company
-  '(add-to-list 'company-backends 'company-irony))
+  '(add-to-list 'company-backends 'company-gtags))
 
 (use-package company-quickhelp
   :config
