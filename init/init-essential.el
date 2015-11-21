@@ -33,4 +33,5 @@
 (prefer-coding-system 'utf-8)
 (when (display-graphic-p)
   (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING)))
+(add-to-list 'auto-mode-alist '("\\.gmk\\'" . makefile-gmake-mode)) ;; open gmk as gnu make 
 (provide 'init-essential)

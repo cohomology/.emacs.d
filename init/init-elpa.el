@@ -8,6 +8,7 @@
     ("http" . "proxy:8080")
     ("https" . "proxy:8080")))
 ;; initialize use-package for use-package macro
+(require 'url-handlers)
 (require 'use-package)
 (require 'package)
 (mapc (lambda(p) (push p package-archives))

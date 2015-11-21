@@ -14,8 +14,8 @@
   (compile (concat compile-command " krn/local_instance/all")))
 
 (defun my-compile-keys ()
-  (local-set-key [f4] 'my-compile-common)
-  (local-set-key [f5] 'my-compile-all))
+  (local-set-key [f2] 'my-compile-common)
+  (local-set-key [f3] 'my-compile-all))
 
 (add-hook 'c-mode-common-hook 'my-compile-keys)
 (setq compilation-auto-jump-to-first-error t)
