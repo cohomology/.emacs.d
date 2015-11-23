@@ -3,6 +3,8 @@
   :group 'my-init
   :prefix 'my-init-visual)
 
+(set-default-font "dejavu sans mono:pixelsize=17")
+
 (use-package moe-theme
   :config  
   (progn
