@@ -149,6 +149,8 @@
                      "b" 'helm-mini
                      "g" 'projectile-grep
                      "h" 'helm-projectile-find-file-dwim
+                     "b" 'realgud:cmd-break
+                     "c" 'realgud:cmd-clear
                      "f" 'projectile-find-file) ;; recently opened files
 
 ;; increase and decrease width
