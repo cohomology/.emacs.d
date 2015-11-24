@@ -1,0 +1,3 @@
+[submodule "third-party/use-package"]
+	path = third-party/use-package
+	url = https://github.com/jwiegley/use-package

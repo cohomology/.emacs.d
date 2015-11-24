@@ -1,5 +1,5 @@
 (add-to-list 'load-path (expand-file-name "init" user-emacs-directory))
-(add-to-list 'load-path (expand-file-name "third-party" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "third-party/use-package" user-emacs-directory))
 
 ;;  load custom file
 (setq custom-file (expand-file-name "init/init-custom.el" user-emacs-directory))
