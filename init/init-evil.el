@@ -146,11 +146,11 @@
 ;; define evil leader keymapping
 (evil-leader/set-key "r" 'helm-recentf
                      "o" 'delete-other-windows
-                     "b" 'helm-mini
+                     "m" 'helm-mini
                      "g" 'projectile-grep
                      "h" 'helm-projectile-find-file-dwim
-                     "b" 'realgud:cmd-break
-                     "c" 'realgud:cmd-clear
+                     "b" 'my-realgud:cmd-break
+                     "c" 'my-realgud:cmd-clear
                      "f" 'projectile-find-file) ;; recently opened files
 
 ;; increase and decrease width
