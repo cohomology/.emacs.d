@@ -151,6 +151,7 @@
                      "h" 'helm-projectile-find-file-dwim
                      "b" 'my-realgud:cmd-break
                      "c" 'my-realgud:cmd-clear
+                     "s" 'rtags-find-symbol
                      "f" 'projectile-find-file) ;; recently opened files
 
 ;; increase and decrease width
