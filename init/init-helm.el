@@ -12,6 +12,9 @@
 (use-package helm-gtags
   :ensure t)
 
+(use-package helm-ag
+  :ensure t)
+
 (custom-set-variables
  '(helm-gtags-auto-update t))
             

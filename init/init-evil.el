@@ -147,7 +147,7 @@
 (evil-leader/set-key "r" 'helm-recentf
                      "o" 'delete-other-windows
                      "m" 'helm-mini
-                     "g" 'projectile-grep
+                     "g" 'helm-do-ag-project-root
                      "h" 'helm-projectile-find-file-dwim
                      "b" 'my-realgud:cmd-break
                      "c" 'my-realgud:cmd-clear
