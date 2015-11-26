@@ -143,15 +143,22 @@
 						(interactive)
 						(evil-scroll-down nil)))
 
+(defun my-kill-other-buffers ()
+  "Kill all other buffers."
+  (interactive)
+  (mapc 'kill-buffer (delq (current-buffer) (buffer-list))))
+
 ;; define evil leader keymapping
 (evil-leader/set-key "r" 'helm-recentf
-                     "o" 'delete-other-windows
+                     "o" 'helm-occur
+                     "i" 'helm-semantic-or-imenu
                      "m" 'helm-mini
                      "g" 'helm-do-ag-project-root
                      "h" 'helm-projectile-find-file-dwim
                      "b" 'my-realgud:cmd-break
                      "c" 'my-realgud:cmd-clear
                      "s" 'rtags-find-symbol
+                     "k" 'my-kill-other-buffers
                      "f" 'projectile-find-file) ;; recently opened files
 
 ;; increase and decrease width

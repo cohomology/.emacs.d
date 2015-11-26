@@ -59,4 +59,7 @@
   :bind (("C-h b" . helm-descbinds)) 
   :ensure t)
 
+;; imenu building via gtags
+(setq-local imenu-create-index-function #'ggtags-build-imenu-index)
+
 (provide 'init-helm)
