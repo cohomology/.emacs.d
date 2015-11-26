@@ -155,10 +155,11 @@
                      "m" 'helm-mini
                      "g" 'helm-do-ag-project-root
                      "h" 'helm-projectile-find-file-dwim
-                     "b" 'my-realgud:cmd-break
-                     "c" 'my-realgud:cmd-clear
+                     "b" 'realgud:cmd-break
+                     "c" 'realgud:cmd-clear
                      "s" 'rtags-find-symbol
                      "k" 'my-kill-other-buffers
+                     "w" 'my-wikipedia-search
                      "f" 'projectile-find-file) ;; recently opened files
 
 ;; increase and decrease width

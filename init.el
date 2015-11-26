@@ -7,6 +7,7 @@
 
 (require 'init-essential) ;; essential settings, not connected to a specific package
 (require 'init-elpa)      ;; init emacs package repository; provides use-package.el
+(require 'init-w3m)       ;; web browser 
 (require 'init-vc)        ;; version control: git + perforce
 (require 'init-backup)    ;; init backup settings
 (require 'init-linum)     ;; everything connected to line numbers
@@ -20,4 +21,4 @@
 (require 'init-company)   ;; company mode 
 (require 'init-compile)   ;; compile settings
 (require 'init-antlr)     ;; antlr-mode
-
+(require 'init-org)       ;; org mode
