@@ -3,8 +3,7 @@
   :group 'my-init
   :prefix 'my-init-gdb)
 
-(use-package realgud
-  :ensure t)
+(require 'realgud) ;; take realgud from git repository
 
 (global-set-key [f5] 'realgud:cmd-step)
 (global-set-key [f6] 'realgud:cmd-next)
