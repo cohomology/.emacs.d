@@ -23,7 +23,10 @@
   :group 'my-init-eval)
 
 (defcustom my-init-evil/emacs-state-hooks
-  '(org-log-buffer-setup-hook org-capture-mode-hook)
+  '(org-log-buffer-setup-hook 
+    org-capture-mode-hook
+    gnus-summary-mode
+    gnus-article-mode)
   "List of hooks to automatically start up in Evil Emacs state."
   :type '(repeat (symbol))
   :group 'my-init-evil)
@@ -49,6 +52,7 @@
 (setq evil-insert-state-cursor '("red" bar))
 (setq evil-replace-state-cursor '("red" bar))
 (setq evil-operator-state-cursor '("red" hollow))
+
 
 (use-package evil
   :ensure t)
@@ -210,5 +214,11 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
                  evil-insert-state-map
                  evil-emacs-state-map))
     (define-key (eval map) "\C-w" nil)))
+
+(require 'edebug)
+
+;; make edebug keybindings work with evil mode
+(evil-make-overriding-map edebug-mode-map 'normal)
+(add-hook 'edebug-mode-hook #'evil-normalize-keymaps)
 
 (provide 'init-evil)

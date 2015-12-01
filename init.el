@@ -1,5 +1,6 @@
 (add-to-list 'load-path (expand-file-name "init" user-emacs-directory))
 (add-to-list 'load-path (expand-file-name "third-party/use-package" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "third-party/realgud" user-emacs-directory)) 
 
 ;;  load custom file
 (setq custom-file (expand-file-name "init/init-custom.el" user-emacs-directory))
@@ -7,7 +8,7 @@
 
 (require 'init-essential) ;; essential settings, not connected to a specific package
 (require 'init-elpa)      ;; init emacs package repository; provides use-package.el
-(require 'init-w3m)       ;; web browser 
+(require 'init-w3m)       ;; initialize web browsing
 (require 'init-vc)        ;; version control: git + perforce
 (require 'init-backup)    ;; init backup settings
 (require 'init-linum)     ;; everything connected to line numbers
