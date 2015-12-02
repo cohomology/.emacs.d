@@ -4,10 +4,10 @@
   :prefix 'my-init-backup)
 
 ;; backup settings
-(defvar my-backup-dir (expand-file-name "~/.emacs.d/backup/")
+(defvar my-backup-dir (expand-file-name "backup" user-emacs-directory)
   "My backup diretory.")
 
-(defvar my-autosave-dir (expand-file-name "~/.emacs.d/autosave/")
+(defvar my-autosave-dir (expand-file-name "autosave" user-emacs-directory)
   "My auto save directory.")
 
 (setq backup-by-copying t)    ; don't clobber symlinks

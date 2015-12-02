@@ -22,7 +22,7 @@
 (setq visible-bell t)
 (setq compilation-scroll-output t)   ;; scroll during compilation
 (setq x-select-enable-clipboard nil) ;; disable clipboard => doesn't work with evil; still works with + register
-(setq bookmark-default-file "~/.emacs.d/bookmarks"
+(setq bookmark-default-file (expand-file-name "bookmarks" user-emacs-directory)
       bookmark-save-flag 1) ;; save after every change
 (setq-default tab-width 2 indent-tabs-mode nil) ;; no tabs, indent = 2
 (add-to-list 'safe-local-variable-values
