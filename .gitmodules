@@ -3,7 +3,7 @@
 	url = https://github.com/jwiegley/use-package
 [submodule "third-party/realgud"]
 	path = third-party/realgud
-	url = https://github.com/rocky/emacs-dbgr
+	url = https://github.com/cohomology/emacs-dbgr
 [submodule "third-party/rtags"]
 	path = third-party/rtags
 	url = https://github.com/Andersbakken/rtags
