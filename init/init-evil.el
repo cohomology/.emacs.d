@@ -215,10 +215,9 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
                  evil-emacs-state-map))
     (define-key (eval map) "\C-w" nil)))
 
-(require 'edebug)
-
 ;; make edebug keybindings work with evil mode
-(evil-make-overriding-map edebug-mode-map 'normal)
-(add-hook 'edebug-mode-hook #'evil-normalize-keymaps)
+(with-eval-after-load "edebug" 
+  (evil-make-overriding-map edebug-mode-map 'normal)
+  (add-hook 'edebug-mode-hook #'evil-normalize-keymaps))
 
 (provide 'init-evil)
