@@ -116,11 +116,6 @@
 (use-package evil-vimish-fold
   :ensure t)
 
-(use-package elscreen
-  :config
-  (elscreen-start)
-  :ensure t)
-
 (use-package evil-tabs
   :config
   (global-evil-tabs-mode t)
