@@ -28,6 +28,7 @@
 
 (add-hook 'after-init-hook 'my-helm-quit-keys)
 (add-hook 'c-mode-common-hook 'my-helm-gtags-mode)
+(add-hook 'emacs-lisp-mode-hook 'my-helm-gtags-mode)
 
 (use-package projectile
   :init
