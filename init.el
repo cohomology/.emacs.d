@@ -5,7 +5,11 @@
 (add-to-list 'load-path (expand-file-name "third-party/load-relative" user-emacs-directory))  
 (add-to-list 'load-path (expand-file-name "third-party/loc-changes" user-emacs-directory))  
 (add-to-list 'load-path (expand-file-name "third-party/list-utils" user-emacs-directory))  
+(add-to-list 'load-path (expand-file-name "third-party/elscreen" user-emacs-directory))  
 
+;; elscreen must be loaded before all other packages
+(require 'elscreen)
+(elscreen-start)
 
 ;;  load custom file
 (setq custom-file (expand-file-name "init/init-custom.el" user-emacs-directory))

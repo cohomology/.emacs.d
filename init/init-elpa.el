@@ -3,10 +3,11 @@
   :group 'my-init
   :prefix 'my-init-elpa)
 ;; set proxy settings
-(setq url-proxy-services
-  '(("no_proxy" . "^\\(localhost\\|10.*\\)")
-    ("http" . "proxy:8080")
-    ("https" . "proxy:8080")))
+(when (string-prefix-p "WDF" (upcase system-name))
+  (setq url-proxy-services
+        '(("no_proxy" . "^\\(localhost\\|10.*\\)")
+          ("http" . "proxy:8080")
+          ("https" . "proxy:8080"))))
 ;; initialize use-package for use-package macro
 (require 'url-handlers)
 (require 'use-package)
@@ -19,8 +20,5 @@
 ;; get new contents
 (package-refresh-contents)
 (package-initialize)
-(use-package elscreen
-  :config
-  (elscreen-start)
-  :ensure t)
+
 (provide 'init-elpa)

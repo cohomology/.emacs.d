@@ -16,3 +16,6 @@
 [submodule "third-party/list-utils"]
 	path = third-party/list-utils
 	url = https://github.com/rolandwalker/list-utils
+[submodule "third-party/elscreen"]
+	path = third-party/elscreen
+	url = https://github.com/knu/elscreen

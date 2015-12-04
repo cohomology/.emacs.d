@@ -53,7 +53,6 @@
 (setq evil-replace-state-cursor '("red" bar))
 (setq evil-operator-state-cursor '("red" hollow))
 
-
 (use-package evil
   :ensure t)
 
@@ -115,6 +114,11 @@
   :ensure t)
 
 (use-package evil-vimish-fold
+  :ensure t)
+
+(use-package elscreen
+  :config
+  (elscreen-start)
   :ensure t)
 
 (use-package evil-tabs
@@ -209,7 +213,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 
 (my-set-control-w-shortcuts)
 
-(eval-after-load "evil-maps"
+(with-eval-after-load "evil-maps"
   (dolist (map '(evil-motion-state-map
                  evil-insert-state-map
                  evil-emacs-state-map))
