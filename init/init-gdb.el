@@ -4,7 +4,7 @@
   :prefix 'my-init-gdb)
 
 (use-package realgud
-  :init
+  :config
   (setq realgud-populate-common-fn-keys-function nil))
 
 (global-set-key [f5] 'realgud:cmd-step)
@@ -18,7 +18,7 @@
   (let ((cB (window-buffer))
         (cW (selected-window)))
     (if (one-window-p)
-        (select-window (split-window-horizontally))
+        (select-window (split-window))
       (other-window 1)
       (switch-to-buffer cB))
     (realgud:gdb-pid-associate pid)
