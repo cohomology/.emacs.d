@@ -11,8 +11,8 @@
   (global-magit-file-mode)
   :ensure t)
 
-(use-package evil-magit
-  :ensure t)
+(with-eval-after-load 'evil
+  (use-package evil-magit))
 
 (global-set-key (kbd "C-x g") 'magit-status)
 (global-set-key (kbd "C-x M-g") 'magit-dispatch-popup)
