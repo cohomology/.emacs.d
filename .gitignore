@@ -1,1 +1,8 @@
-*
+
+GPATH
+GRTAGS
+GTAGS
+backup/
+elpa
+projectile*
+recentf
