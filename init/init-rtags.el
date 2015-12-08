@@ -3,7 +3,7 @@
   :group 'my-init
   :prefix 'my-init-rtags)
 
-(require 'rtags) ;; take rtags from git repository; note that you should compile it first!
+(use-package rtags)   ;; use rtags from git submodule, don't ensure here!
 
 (defun my-rtags-complete ()
   (interactive)
