@@ -7,6 +7,7 @@
   :init
   (progn
     (setq company-idle-delay 0)
+    (setq company-dabbrev-downcase nil)
     (setq company-auto-complete nil)
     (setq company-async-timeout 10))
   :config
