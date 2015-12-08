@@ -18,7 +18,7 @@
 (global-set-key (kbd "C-x M-g") 'magit-dispatch-popup)
 
 ;; make C-w my normal window switching
-(eval-after-load "magit"
+(with-eval-after-load 'magit
   (dolist (map '(magit-mode-map))
     (define-key (eval map) "\C-w" nil)))
 

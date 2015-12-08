@@ -15,7 +15,8 @@
 (global-visual-line-mode nil)
 (setq-default left-fringe-width nil)
 (setq-default indent-tabs-mode nil)
-(eval-after-load "vc" '(setq vc-handled-backends nil))
+(with-eval-after-load 'vc
+  (setq vc-handled-backends nil))
 (setq vc-follow-symlinks t)
 (setq large-file-warning-threshold nil)
 (setq split-width-threshold nil)

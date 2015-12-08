@@ -17,9 +17,10 @@
 
 (require 'company-gtags)
 
-(setq company-backends (delete 'company-clang company-backends))
-(eval-after-load 'company
-  '(add-to-list 'company-backends 'company-gtags))
+(with-eval-after-load 'company
+  (setq company-backends (delete 'company-clang company-backends))
+  (add-to-list 'company-backends 'company-gtags)
+  (add-to-list 'company-backends 'company-rtags))
 
 (use-package company-quickhelp
   :config
