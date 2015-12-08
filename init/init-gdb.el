@@ -7,7 +7,7 @@
 
 (global-set-key [f5] 'realgud:cmd-step)
 (global-set-key [f6] 'realgud:cmd-next)
-(global-set-key [f7] 'realgud:cmd-continue)
+(global-set-key [f7] (lambda() (interactive) (realgud:cmd-continue "")))
 (global-set-key [f8] 'realgud:cmd-finish)
 
 (defun my-start-debugging-pid (pid)
