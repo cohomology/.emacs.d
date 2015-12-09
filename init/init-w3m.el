@@ -3,6 +3,9 @@
   :group 'my-init
   :prefix 'my-init-w3m)
 
+(use-package wanderlust
+  :ensure t) ;; w3m uses calist from wanderlust
+
 (use-package w3m
   :ensure t)
 

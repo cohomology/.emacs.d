@@ -13,10 +13,8 @@
 (require 'use-package)
 (require 'package)
 (mapc (lambda(p) (push p package-archives))
-      '(("gnu" . "http://elpa.gnu.org/packages/")
-        ("org" . "http://orgmode.org/elpa/")
-        ("melpa" . "http://melpa.milkbox.net/packages/")
-        ("melpa-stable" . "http://melpa-stable.milkbox.net/packages/")))
+      '(("org" . "http://orgmode.org/elpa/")
+        ("melpa" . "http://melpa.milkbox.net/packages/")))
 ;; get new contents
 (package-refresh-contents)
 (package-initialize)
