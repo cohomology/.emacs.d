@@ -123,7 +123,9 @@
 
 (defun my-major-mode-evil-state-adjust ()
   (if (apply 'derived-mode-p my-init-evil/evil-state-modes)
-      (turn-on-evil-mode)
+      (progn
+        (turn-on-evil-mode)
+        (evil-normal-state))
     (set-cursor-color my-init-evil/emacs-cursor)
     (turn-off-evil-mode)))
 (add-hook 'after-change-major-mode-hook #'my-major-mode-evil-state-adjust)
@@ -218,5 +220,10 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (with-eval-after-load "edebug" 
   (evil-make-overriding-map edebug-mode-map 'normal)
   (add-hook 'edebug-mode-hook #'evil-normalize-keymaps))
+
+;; repair help mode to work well with evil 
+(evil-define-key 'normal help-mode-map
+  (kbd "q") 'quit-window)
+(add-hook 'help-mode-hook #'evil-normalize-keymaps)
 
 (provide 'init-evil)

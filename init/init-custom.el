@@ -8,7 +8,7 @@
  '(helm-gtags-auto-update t)
  '(package-selected-packages
    (quote
-    (powerline-evil p4 org-vcard org-sync org-screenshot org-projectile org-doing org-ac moe-theme helm-projectile helm-orgcard helm-cscope helm-cmd-t flx-ido evil-vimish-fold evil-tutor evil-tabs evil-leader evil-jumper evil-escape))))
+    (evil-org company-quickhelp company evil-numbers evil-visualstar evil-indent-textobject evil-matchit evil-anzu evil-exchange evil-surround evil-commentary evil-magit evil helm-descbinds projectile helm-ag helm-gtags powerline-evil p4 org-vcard org-sync org-screenshot org-projectile org-doing org-ac moe-theme helm-projectile helm-orgcard helm-cscope helm-cmd-t flx-ido evil-vimish-fold evil-tutor evil-tabs evil-leader evil-jumper evil-escape))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
