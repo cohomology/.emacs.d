@@ -5,3 +5,6 @@ backup/
 elpa
 projectile*
 recentf
+bookmarks
+autosave*
+auto-save*
