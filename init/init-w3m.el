@@ -4,7 +4,7 @@
   :prefix 'my-init-w3m)
 
 (use-package wanderlust
-  :ensure t) ;; w3m uses calist from wanderlust
+  :ensure t) ;; w3m's dependencies are wrong
 
 (use-package w3m
   :ensure t)

@@ -43,6 +43,9 @@
   :type '(repeat (symbol))
   :group 'my-init-evil)
 
+(defvar my-init-evil/evil-startup-hooks nil
+  "All functions evuated when evil starts.")
+
 (setq evil-search-module 'evil-search)
 (setq evil-magic 'very-magic)
 
@@ -57,25 +60,25 @@
   :ensure t)
 
 (unless (display-graphic-p)
-  (evil-esc-mode))
+  (add-to-list 'my-init-evil/evil-startup-hooks #'(lambda () (evil-esc-mode 1))))
 
 (use-package evil-leader
   :init
   (setq evil-leader/in-all-states 1)
   :config
   (progn
-    (global-evil-leader-mode t)
+    (add-to-list 'my-init-evil/evil-startup-hooks #'(lambda () (evil-leader-mode t)))
     (evil-leader/set-leader ","))
   :ensure t)
 
 (use-package evil-commentary
   :config
-  (evil-commentary-mode t)
+  (add-to-list 'my-init-evil/evil-startup-hooks #'(lambda () (evil-commentary-mode t)))
   :ensure t)
 
 (use-package evil-surround
   :config
-  (global-evil-surround-mode t)
+  (add-to-list 'my-init-evil/evil-startup-hooks #'(lambda () (evil-surround-mode t)))
   :ensure t) 
 
 (use-package evil-exchange
@@ -86,11 +89,11 @@
 (use-package evil-anzu
   :ensure t)
 
- (use-package evil-jumper
+(use-package evil-jumper
   :init
   (setq evil-jumper-auto-center t)
   :config
-  (global-evil-jumper-mode)
+  (add-to-list 'my-init-evil/evil-startup-hooks #'(lambda () (evil-jumper-mode t)))
   :ensure t)
 
 (use-package evil-matchit
@@ -99,7 +102,7 @@
     (evil-define-key 'normal evil-matchit-mode-map
       "%" 'evilmi-jump-items))
   :config
-  (global-evil-matchit-mode t)
+  (add-to-list 'my-init-evil/evil-startup-hooks #'(lambda () (evil-matchit-mode t)))
   :ensure t)
 
 (use-package evil-indent-textobject
@@ -107,7 +110,7 @@
 
 (use-package evil-visualstar
   :config
-  (global-evil-visualstar-mode t)
+  (add-to-list 'my-init-evil/evil-startup-hooks #'(lambda () (evil-visualstar-mode t)))
   :ensure t)
 
 (use-package evil-numbers
@@ -118,14 +121,15 @@
 
 (use-package evil-tabs
   :config
-  (global-evil-tabs-mode t)
+  (add-to-list 'my-init-evil/evil-startup-hooks #'(lambda () (evil-tabs-mode t)))
   :ensure t)
 
 (defun my-major-mode-evil-state-adjust ()
   (if (apply 'derived-mode-p my-init-evil/evil-state-modes)
       (progn
         (turn-on-evil-mode)
-        (evil-normal-state))
+        (evil-normal-state)
+        (mapc (lambda (x) (funcall x)) my-init-evil/evil-startup-hooks))
     (set-cursor-color my-init-evil/emacs-cursor)
     (turn-off-evil-mode)))
 (add-hook 'after-change-major-mode-hook #'my-major-mode-evil-state-adjust)
