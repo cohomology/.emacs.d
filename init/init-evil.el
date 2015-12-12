@@ -56,7 +56,8 @@
 (setq evil-replace-state-cursor '("red" bar))
 (setq evil-operator-state-cursor '("red" hollow))
 
-(use-package evil) ;; is a submodule now, because lot's of bugs
+(use-package evil 
+ :ensure t)
 
 (unless (display-graphic-p)
   (add-to-list 'my-init-evil/evil-startup-hooks #'(lambda () (evil-esc-mode 1))))
