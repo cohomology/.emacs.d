@@ -19,6 +19,3 @@
 [submodule "third-party/elscreen"]
 	path = third-party/elscreen
 	url = https://github.com/knu/elscreen
-[submodule "third-party/evil"]
-	path = third-party/evil
-	url = https://github.com/emacsmirror/evil

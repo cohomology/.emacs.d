@@ -6,7 +6,6 @@
 (add-to-list 'load-path (expand-file-name "third-party/loc-changes" user-emacs-directory))  
 (add-to-list 'load-path (expand-file-name "third-party/list-utils" user-emacs-directory))  
 (add-to-list 'load-path (expand-file-name "third-party/elscreen" user-emacs-directory))  
-(add-to-list 'load-path (expand-file-name "third-party/evil" user-emacs-directory))  
 
 ;; elscreen must be loaded before all other packages
 (require 'elscreen)
