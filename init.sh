@@ -16,6 +16,13 @@ pushd third-part/load-relative
 make 
 popd
 
+pushd third-party/test-simple
+./autogen.sh
+./configure
+make
+popd
+
+
 pushd third-party/realgud
 ./autogen.sh
 ./configure
