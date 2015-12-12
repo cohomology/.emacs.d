@@ -56,8 +56,7 @@
 (setq evil-replace-state-cursor '("red" bar))
 (setq evil-operator-state-cursor '("red" hollow))
 
-(use-package evil
-  :ensure t)
+(use-package evil) ;; is a submodule now, because lot's of bugs
 
 (unless (display-graphic-p)
   (add-to-list 'my-init-evil/evil-startup-hooks #'(lambda () (evil-esc-mode 1))))
@@ -128,7 +127,6 @@
   (if (apply 'derived-mode-p my-init-evil/evil-state-modes)
       (progn
         (turn-on-evil-mode)
-        (evil-normal-state)
         (mapc (lambda (x) (funcall x)) my-init-evil/evil-startup-hooks))
     (set-cursor-color my-init-evil/emacs-cursor)
     (turn-off-evil-mode)))
