@@ -5,14 +5,10 @@
 
 (use-package realgud
   :config
-  (setq realgud-populate-common-fn-keys-function nil))
+  (setq realgud-populate-common-fn-keys-function
+        'realgud-populate-common-fn-keys-eclipse))
 
-(global-set-key [f5] 'realgud:cmd-step)
-(global-set-key [f6] 'realgud:cmd-next)
-(global-set-key [f7] (lambda() (interactive) (realgud:cmd-continue "")))
-(global-set-key [f8] 'realgud:cmd-finish)
-
-(defun my-start-debugging-pid (pid)
+(defun my-init-gdb/start-debugging-pid (pid)
   "Start debugging process with pid PID."
   (interactive "nEnter the pid: ")
   (let ((cB (window-buffer))
@@ -24,6 +20,6 @@
     (realgud:gdb-pid-associate pid)
     (select-window cW)))
 
-(global-set-key [f12] 'my-start-debugging-pid)
+(global-set-key [f12] 'my-init-gdb/start-debugging-pid)
 
 (provide 'init-gdb)

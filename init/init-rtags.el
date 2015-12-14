@@ -5,24 +5,23 @@
 
 (use-package rtags)   ;; use rtags from git submodule, don't ensure here!
 
-(defun my-rtags-complete ()
+(defun my-init-rtags/complete ()
   (interactive)
   (rtags-find-symbol-at-point))
 
-(defadvice my-rtags-complete (before evil-jumper--switch-to-buffer activate)  
+(defadvice my-init-rtags/complete (before evil-jumper--switch-to-buffer activate)  
   (evil-jumper--set-jump))  
 
-(defun my-rtags-find-references ()
+(defun my-init-rtags/find-references ()
   (interactive)
   (rtags-find-references-at-point))
 
-(defadvice my-rtags-find-references (before evil-jumper--switch-to-buffer activate)  
+(defadvice my-init-rtags/find-references (before evil-jumper--switch-to-buffer activate)  
   (evil-jumper--set-jump))  
 
-
-(defun my-rtags-keys ()
-  (local-set-key (kbd "C-#") 'my-rtags-find-references)
-  (local-set-key (kbd "C-ö") 'my-rtags-complete)
+(defun my-init-rtags/keys ()
+  (local-set-key (kbd "C-#") 'my-init-rtags/find-references)
+  (local-set-key (kbd "C-ö") 'my-init-rtags/complete)
   (local-set-key (kbd "C-ä") (lambda () (interactive)
                                (let* ((cB (window-buffer))
                                       (cW (selected-window)))
@@ -33,6 +32,6 @@
                                  (rtags-find-symbol-at-point)
                                  (select-window cW)))))
 
-(add-hook 'c-mode-common-hook 'my-rtags-keys)
+(add-hook 'c-mode-common-hook 'my-init-rtags/keys)
 
 (provide 'init-rtags)

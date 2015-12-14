@@ -33,7 +33,7 @@
 
 (defcustom my-init-evil/emacs-cursor
   "red"
-  "The colorof the cursor in Emacs state."
+  "The color of the cursor in Emacs state."
   :type 'color
   :group 'my-init-evil)
 
@@ -97,10 +97,6 @@
   :ensure t)
 
 (use-package evil-matchit
-  :init
-  (defun evilmi-customize-keybinding ()
-    (evil-define-key 'normal evil-matchit-mode-map
-      "%" 'evilmi-jump-items))
   :config
   (add-to-list 'my-init-evil/evil-startup-hooks #'(lambda () (evil-matchit-mode t)))
   :ensure t)
@@ -124,14 +120,14 @@
   (add-to-list 'my-init-evil/evil-startup-hooks #'(lambda () (evil-tabs-mode t)))
   :ensure t)
 
-(defun my-major-mode-evil-state-adjust ()
+(defun my-init-evil/major-mode-evil-state-adjust ()
   (if (apply 'derived-mode-p my-init-evil/evil-state-modes)
       (progn
         (turn-on-evil-mode)
         (mapc (lambda (x) (funcall x)) my-init-evil/evil-startup-hooks))
     (set-cursor-color my-init-evil/emacs-cursor)
     (turn-off-evil-mode)))
-(add-hook 'after-change-major-mode-hook #'my-major-mode-evil-state-adjust)
+(add-hook 'after-change-major-mode-hook #'my-init-evil/major-mode-evil-state-adjust)
 
 (cl-loop for mode in my-init-evil/emacs-state-minor-modes
          do (let ((hook (concat (symbol-name mode) "-hook")))
@@ -151,7 +147,7 @@
 						(interactive)
 						(evil-scroll-down nil)))
 
-(defun my-kill-other-buffers ()
+(defun my-init-evil/kill-other-buffers ()
   "Kill all other buffers."
   (interactive)
   (mapc 'kill-buffer (delq (current-buffer) (buffer-list))))
@@ -165,10 +161,14 @@
                      "h" 'helm-projectile-find-file-dwim
                      "b" 'realgud:cmd-break
                      "c" 'realgud:cmd-clear
-                     "s" 'rtags-find-symbol
-                     "k" 'my-kill-other-buffers
-                     "w" 'my-wikipedia-search
+                     "k" 'my-init-evil/kill-other-buffers
+                     "w" 'my-init-w3m/wikipedia-search
                      "f" 'projectile-find-file) ;; recently opened files
+
+;; mode local leader keys
+(evil-leader/set-key-for-mode 'emacs-lisp-mode "s" 'helm-gtags-find-tag)
+(evil-leader/set-key-for-mode 'c++-mode "s" 'rtags-find-symbol)
+(evil-leader/set-key-for-mode 'c-mode "s" 'rtags-find-symbol)
 
 ;; increase and decrease width
 (global-set-key (kbd "C-+") 'evil-window-increase-width)
@@ -177,7 +177,7 @@
 (global-set-key (kbd "C-M--") 'evil-window-decrease-height)
 
 ;; escape everything
-(defun my-minibuffer-keyboard-quit ()
+(defun my-init-evil/minibuffer-keyboard-quit ()
   "Abort recursive edit.
 In Delete Selection mode, if the mark is active, just deactivate it;
 then it takes a second \\[keyboard-quit] to abort the minibuffer."
@@ -188,14 +188,14 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
     (abort-recursive-edit)))
 (define-key evil-normal-state-map [escape] 'keyboard-quit)
 (define-key evil-visual-state-map [escape] 'keyboard-quit)
-(define-key minibuffer-local-map [escape] 'my-minibuffer-keyboard-quit)
-(define-key minibuffer-local-ns-map [escape] 'my-minibuffer-keyboard-quit)
-(define-key minibuffer-local-completion-map [escape] 'my-minibuffer-keyboard-quit)
-(define-key minibuffer-local-must-match-map [escape] 'my-minibuffer-keyboard-quit)
-(define-key minibuffer-local-isearch-map [escape] 'my-minibuffer-keyboard-quit)
+(define-key minibuffer-local-map [escape] 'my-init-evil/minibuffer-keyboard-quit)
+(define-key minibuffer-local-ns-map [escape] 'my-init-evil/minibuffer-keyboard-quit)
+(define-key minibuffer-local-completion-map [escape] 'my-init-evil/minibuffer-keyboard-quit)
+(define-key minibuffer-local-must-match-map [escape] 'my-init-evil/minibuffer-keyboard-quit)
+(define-key minibuffer-local-isearch-map [escape] 'my-init-evil/minibuffer-keyboard-quit)
 
-;; global C-w configuration; not just in evil buffers
-(defun my-set-control-w-shortcuts ()
+(defun my-init-evil/set-control-w-shortcuts ()
+  "Set the C-w key globally, not just in evil buffers."
   (define-prefix-command 'my-window-map)
   (global-set-key (kbd "C-w") 'my-window-map)
   (define-key my-window-map (kbd "h") 'windmove-left)
@@ -211,7 +211,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
   (define-key my-window-map (kbd "n") 'elscreen-next)
   (define-key my-window-map (kbd "t") 'evil-tabs-current-buffer-to-tab))
 
-(my-set-control-w-shortcuts)
+(my-init-evil/set-control-w-shortcuts)
 
 (with-eval-after-load "evil-maps"
   (dolist (map '(evil-motion-state-map

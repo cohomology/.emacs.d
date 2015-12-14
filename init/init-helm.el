@@ -18,17 +18,17 @@
 (custom-set-variables
  '(helm-gtags-auto-update t))
             
-(defun my-helm-quit-keys ()
+(defun my-init-helm/quit-keys ()
   (define-key helm-map (kbd "ESC") 'helm-keyboard-quit))
 
-(defun my-helm-gtags-mode ()
+(defun my-init-helm/gtags-mode ()
   (interactive)
   (helm-gtags-mode)
   (local-set-key (kbd "M-ö") 'helm-gtags-find-tag-from-here))
 
-(add-hook 'after-init-hook 'my-helm-quit-keys)
-(add-hook 'c-mode-common-hook 'my-helm-gtags-mode)
-(add-hook 'emacs-lisp-mode-hook 'my-helm-gtags-mode)
+(add-hook 'after-init-hook 'my-init-helm/quit-keys)
+(add-hook 'c-mode-common-hook 'my-init-helm/gtags-mode)
+(add-hook 'emacs-lisp-mode-hook 'my-init-helm/gtags-mode)
 
 (use-package projectile
   :init

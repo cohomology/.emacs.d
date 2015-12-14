@@ -13,12 +13,12 @@
   :ensure t)
 
 ;; indent case labels, too
-(defun my-c-mode-hooks ()
+(defun my-init-cpp/c-mode-hooks ()
   (c-set-offset 'case-label '+))
 
-(add-hook 'c-mode-common-hook 'my-c-mode-hooks)
+(add-hook 'c-mode-common-hook 'my-init-cpp/c-mode-hooks)
 
-;; thread .h and .c files as c++
+;; treat .h and .c files as c++
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 (add-to-list 'auto-mode-alist '("\\.c\\'" . c++-mode))
 

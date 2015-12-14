@@ -25,7 +25,7 @@
       w3m-output-coding-system 'utf-8
       w3m-terminal-coding-system 'utf-8)
 
-(defun my-wikipedia-search (search-term)
+(defun my-init-w3m/wikipedia-search (search-term)
   "Search for SEARCH-TERM on wikipedia"
   (interactive
    (let ((term (if mark-active
