@@ -10,7 +10,7 @@ pushd third-party/loc-changes
 make
 popd
 
-pushd third-part/load-relative
+pushd third-party/load-relative
 ./autogen.sh
 ./configure
 make 
@@ -21,7 +21,6 @@ pushd third-party/test-simple
 ./configure
 make
 popd
-
 
 pushd third-party/realgud
 ./autogen.sh
