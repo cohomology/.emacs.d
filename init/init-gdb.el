@@ -4,7 +4,7 @@
   :prefix 'my-init-gdb)
 
 (use-package realgud
-  :config
+  :init
   (setq realgud-populate-common-fn-keys-function
         'realgud-populate-common-fn-keys-eclipse))
 
