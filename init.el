@@ -14,7 +14,7 @@
 
 ;;  load custom file
 (setq custom-file (expand-file-name "init/init-custom.el" user-emacs-directory))
-(unless file-exists-p custom-file)
+(unless (file-exists-p custom-file))
   (write-region "" nil custom-file)
 (load custom-file)
 
