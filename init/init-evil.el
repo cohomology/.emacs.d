@@ -167,6 +167,7 @@
 
 ;; mode local leader keys
 (evil-leader/set-key-for-mode 'emacs-lisp-mode "s" 'helm-gtags-find-tag)
+(evil-leader/set-key-for-mode 'lisp-interaction-mode "s" 'helm-gtags-find-tag)
 (evil-leader/set-key-for-mode 'c++-mode "s" 'rtags-find-symbol)
 (evil-leader/set-key-for-mode 'c-mode "s" 'rtags-find-symbol)
 
