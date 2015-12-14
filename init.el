@@ -14,6 +14,8 @@
 
 ;;  load custom file
 (setq custom-file (expand-file-name "init/init-custom.el" user-emacs-directory))
+(unless file-exists-p custom-file)
+  (write-region "" nil custom-file)
 (load custom-file)
 
 (require 'init-essential) ;; essential settings, not connected to a specific package
