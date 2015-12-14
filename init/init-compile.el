@@ -3,19 +3,26 @@
   :group 'my-init
   :prefix 'my-init-compile)
 
-(defun my-init-compile/compile-common ()
-  "Comple common projects."
-  (interactive)
-  (compile (concat compile-command " -p krn/dbi all -p krn/abap all -p krn/sapr3 all -p krn/local_instance all")))
+(defvar-local my-init-compile/compile-common ""
+  "Compile common projects. Should be overwritten by .dir-locals.el")
 
-(defun my-init-compile/compile-all ()
-  "Compile whole kernel."
+(defvar-local my-init-compile/compile-all ""
+  "Compile all project. Should be overwritten by .dir-locals.el")
+
+(defun my-init-compile/do-compile-common ()
+  "Compile common projects."
   (interactive)
-  (compile (concat compile-command " krn/local_instance/all")))
+  (compile (concat compile-command my-init-compile/compile-common))) 
+
+(defun my-init-compile/do-compile-all ()
+  "Compile all projects."
+  (interactive)
+  (compile (concat compile-command my-init-compile/compile-all)))
 
 (defun my-init-compile/compile-keys ()
-  (local-set-key [f2] 'my-init-compile/compile-common)
-  (local-set-key [f3] 'my-init-compile/compile-all))
+  "Set compile keys."
+  (local-set-key [f2] 'my-init-compile/do-compile-common)
+  (local-set-key [f3] 'my-init-compile/do-compile-all))
 
 (add-hook 'c-mode-common-hook 'my-init-compile/compile-keys)
 (setq compilation-auto-jump-to-first-error t)
