@@ -21,5 +21,6 @@
 ;; treat .h and .c files as c++
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 (add-to-list 'auto-mode-alist '("\\.c\\'" . c++-mode))
+(add-to-list 'auto-mode-alist '("\\.inl\\'" . c++-mode)) ;; antlr c++ backend
 
 (provide 'init-cpp)

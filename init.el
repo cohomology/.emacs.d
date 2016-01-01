@@ -35,3 +35,5 @@
 (require 'init-compile)   ;; compile settings
 (require 'init-antlr)     ;; antlr-mode
 (require 'init-org)       ;; org mode
+(require 'init-flymake)   ;; flymake
+(require 'init-haskell)   ;; haskell mode

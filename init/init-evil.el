@@ -17,6 +17,8 @@
     magit-log-mode
     magit-revision-mode
     magit-mode
+    haskell-mode
+    haskell-cabal-mode
     log-edit-mode)
   "List of modes that should start up in Evil state."
   :type '(repeat (symbol))
